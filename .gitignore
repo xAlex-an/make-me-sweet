@@ -1,0 +1,40 @@
+# Virtual environments
+.venv/
+env/
+myenv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+# Django
+*.sqlite3
+db.sqlite3
+/staticfiles/
+/media/
+/env.py
+
+# Environment & secrets
+.env
+
+# Logs & temp
+*.log
+stripe_debug.log
+tmp/
+
+# System
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Extra (Windows crash dumps)
+core.python*
+core.Microsoft*
+core.mongo*
