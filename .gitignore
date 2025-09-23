@@ -19,6 +19,7 @@ pycache/
 *.py[cod]
 settings.json
 db.sqlite3
+recipes/fixtures/
 
 # Django
 *.sqlite3
