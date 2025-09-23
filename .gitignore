@@ -11,6 +11,15 @@ __pycache__/
 *.egg-info/
 *.egg
 
+
+env.py
+.env
+venv/
+pycache/
+*.py[cod]
+settings.json
+db.sqlite3
+
 # Django
 *.sqlite3
 db.sqlite3
