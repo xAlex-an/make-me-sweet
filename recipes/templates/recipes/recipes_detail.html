@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="masthead">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-md-6 masthead-text">
+        <!-- Tytuł przepisu -->
+        <h1 class="post-title">{{ recipe.title }}</h1>
+        <!-- Autor przepisu | Data utworzenia -->
+        <p class="post-subtitle">{{ recipe.author }} | {{ recipe.created_on }}</p>
+      </div>
+      <div class="d-none d-md-block col-md-6 masthead-image">
+        <img src="{% static 'images/apple.pie.jpg' %}" class="scale" alt="placeholder">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col card mb-4 mt-3 left top">
+      <div class="card-body">
+        <!-- Treść przepisu -->
+        <p class="card-text">
+          {{ recipe.content|safe }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
