@@ -2,31 +2,60 @@
 {% block content %}
 {% load static %}
 
-<div class="masthead">
-  <div class="container">
-    <div class="row g-0">
-      <div class="col-md-6 masthead-text">
-        <!-- Tytuł przepisu -->
-        <h1 class="post-title">{{ recipe.title }}</h1>
-        <!-- Autor przepisu | Data utworzenia -->
-        <p class="post-subtitle">{{ recipe.author }} | {{ recipe.created_on }}</p>
+<div class="container-fluid" style="background-color: #f8f6f3; min-height: 100vh;">
+  <div class="container py-5">
+    <div class="row">
+      
+      <!-- Left Column - Image -->
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="position-sticky" style="top: 2rem;">
+          <img src="{% static 'images/apple.pie.jpg' %}" 
+               class="img-fluid w-100" 
+               alt="{{ recipe.title }}"
+               style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        </div>
       </div>
-      <div class="d-none d-md-block col-md-6 masthead-image">
-        <img src="{% static 'images/apple.pie.jpg' %}" class="scale" alt="placeholder">
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col card mb-4 mt-3 left top">
-      <div class="card-body">
-        <!-- Treść przepisu -->
-        <p class="card-text">
-          {{ recipe.content|safe }}
-        </p>
+      <!-- Right Column - Content -->
+      <div class="col-lg-6">
+        <div class="ps-lg-5">
+          
+          <!-- Recipe Title -->
+          <h1 class="display-5 fw-light text-dark mb-3" style="color: #8B7355;">
+            {{ recipe.title }}
+          </h1>
+          
+          <!-- Author and Date -->
+          <p class="text-muted mb-4" style="font-size: 0.95rem;">
+            {{ recipe.author }} | {{ recipe.created_on|date:"F d, Y" }}
+          </p>
+          
+          <!-- Description -->
+          <div class="mb-5">
+            <p class="lead fw-light text-secondary lh-lg">
+              {{ recipe.description|safe }}
+            </p>
+          </div>
+
+          <!-- Ingredients Section -->
+          <div class="mb-5">
+            <h3 class="h4 fw-light mb-4" style="color: #8B7355;">Ingredients</h3>
+            <div class="text-secondary" style="line-height: 1.8;">
+              {{ recipe.ingredients|linebreaks }}
+            </div>
+          </div>
+
+          <!-- Instructions Section -->
+          <div class="mb-5">
+            <h3 class="h4 fw-light mb-4" style="color: #8B7355;">Instructions</h3>
+            <div class="text-secondary" style="line-height: 1.8;">
+              {{ recipe.instructions|linebreaks }}
+            </div>
+          </div>
+
+        </div>
       </div>
+      
     </div>
   </div>
 </div>
