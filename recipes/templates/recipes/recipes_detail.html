@@ -1,63 +1,156 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 <div class="container-fluid" style="background-color: #f8f6f3; min-height: 100vh;">
-  <div class="container py-5">
+    <div class="container py-5">
+        <div class="row">
+            
+            <!-- Left Column - Image -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="position-sticky" style="top: 2rem;">
+                    <img src="{% static 'images/apple.pie.jpg' %}" 
+                         class="img-fluid w-100" 
+                         alt="{{ recipe.title }}"
+                         style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+
+            <!-- Right Column - Content -->
+            <div class="col-lg-6">
+                <div class="ps-lg-5">
+                    
+                    <!-- Recipe Title -->
+                    <h1 class="display-5 fw-light text-dark mb-3" style="color: #8B7355;">
+                        {{ recipe.title }}
+                    </h1>
+                    
+                    <!-- Author and Date -->
+                    <p class="text-muted mb-4" style="font-size: 0.95rem;">
+                        {{ recipe.author }} | {{ recipe.created_on|date:"F d, Y" }}
+                    </p>
+                    
+                    <!-- Description -->
+                    <div class="mb-5">
+                        <p class="lead fw-light text-secondary lh-lg">
+                            {{ recipe.description|safe }}
+                        </p>
+                    </div>
+
+                    <!-- Ingredients Section -->
+                    <div class="mb-5">
+                        <h3 class="h4 fw-light mb-4" style="color: #8B7355;">Ingredients</h3>
+                        <div class="text-secondary" style="line-height: 1.8;">
+                            {{ recipe.ingredients|linebreaks }}
+                        </div>
+                    </div>
+
+                    <!-- Instructions Section -->
+                    <div class="mb-5">
+                        <h3 class="h4 fw-light mb-4" style="color: #8B7355;">Instructions</h3>
+                        <div class="text-secondary" style="line-height: 1.8;">
+                            {{ recipe.instructions|linebreaks }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Displaying count of comments -->
     <div class="row">
-      
-      <!-- Left Column - Image -->
-      <div class="col-lg-6 mb-5 mb-lg-0">
-        <div class="position-sticky" style="top: 2rem;">
-          <img src="{% static 'images/apple.pie.jpg' %}" 
-               class="img-fluid w-100" 
-               alt="{{ recipe.title }}"
-               style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <div class="col-12">
+            <strong class="text-secondary">
+                <i class="far fa-comments"></i> {{ comment_count }}
+            </strong>
         </div>
-      </div>
-
-      <!-- Right Column - Content -->
-      <div class="col-lg-6">
-        <div class="ps-lg-5">
-          
-          <!-- Recipe Title -->
-          <h1 class="display-5 fw-light text-dark mb-3" style="color: #8B7355;">
-            {{ recipe.title }}
-          </h1>
-          
-          <!-- Author and Date -->
-          <p class="text-muted mb-4" style="font-size: 0.95rem;">
-            {{ recipe.author }} | {{ recipe.created_on|date:"F d, Y" }}
-          </p>
-          
-          <!-- Description -->
-          <div class="mb-5">
-            <p class="lead fw-light text-secondary lh-lg">
-              {{ recipe.description|safe }}
-            </p>
-          </div>
-
-          <!-- Ingredients Section -->
-          <div class="mb-5">
-            <h3 class="h4 fw-light mb-4" style="color: #8B7355;">Ingredients</h3>
-            <div class="text-secondary" style="line-height: 1.8;">
-              {{ recipe.ingredients|linebreaks }}
-            </div>
-          </div>
-
-          <!-- Instructions Section -->
-          <div class="mb-5">
-            <h3 class="h4 fw-light mb-4" style="color: #8B7355;">Instructions</h3>
-            <div class="text-secondary" style="line-height: 1.8;">
-              {{ recipe.instructions|linebreaks }}
-            </div>
-          </div>
-
+        <div class="col-12">
+            <hr>
         </div>
+    </div>
+
+    <!-- Displaying Comments -->
+    <div class="row">
+        <div class="col-md-8 card mb-4 mt-3">
+            <h3>Comments:</h3>
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+                {% for comment in comments %}
+                <div class="p-2 comments
+                    {% if not comment.approved and comment.author == user %}
+                    faded{% elif not comment.approved %} d-none{% endif %}">
+                    <p class="font-weight-bold">
+                        {{ comment.author }}
+                        <span class="font-weight-normal">
+                            {{ comment.created_on }}
+                        </span> wrote:
+                    </p>
+                    <div id="comment{{ comment.id }}">
+                        {{ comment.body | linebreaks }}
+                    </div>
+                    {% if not comment.approved and comment.author == user %}
+                    <p class="approval">
+                        This comment is awaiting approval
+                    </p>
+                    {% endif %}
+                    {% if user.is_authenticated and comment.author == user %}
+                    <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+                    {% endif %}
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Creating New Comments -->
+        <div class="col-md-4 card mb-4 mt-3">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form id="commentForm" method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% else %}
+                <p>Log in to leave a comment</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1"
+  aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+          id="deleteModalLabel">Delete comment?</h5>
+        <button type="button" class="btn-close"
+          data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
+      <div class="modal-body">
+        Are you sure you want to delete your comment?
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-bs-dismiss="modal">Close</button>
+        <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Delete</a>
+      </div>
     </div>
   </div>
 </div>
 
 {% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
