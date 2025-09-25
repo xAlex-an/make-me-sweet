@@ -1,82 +1,240 @@
+/* ==========================================================================
+   CSS Variables (Custom Properties)
+   ========================================================================== */
+:root {
+    --primary-color: #85654e;
+    --primary-dark: #6b4f3e;
+    --secondary-color: #796249;
+    --accent-color: #E84610;
+    --text-color: #2d261b;
+    --text-muted: #5a4a3a;
+    --bg-primary: #fcfaf6;
+    --bg-secondary: #eee8df;
+    --bg-white: #fff;
+    --bg-dark: #445261;
+    --font-primary:"Instrument Sans", sans-serif;
+    --font-secondary: 'Lato', sans-serif;
+    --border-radius: 6px;
+    --transition: all 0.2s ease;
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #fcfaf6;
-    font-family: 'KudryashevHeadline-Regular', Arial, sans-serif;
+    background-color: var(--bg-primary);
+    font-family: var(--font-primary);
     font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
 }
 
-.brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
-}
-
-.red-o {
-    color: #E84610;
-}
-
-.thin {
-    font-weight: 300;
-}
-
-.light-bg {
-    background-color: #fff;
-}
-
-.dark-bg {
-    background-color: #445261;
-}
-
-.main-bg {
-    background-color: #fcfaf6;
-}
-
-/* Typography - nagłówki */
+/* ==========================================================================
+   Typography
+   ========================================================================== */
 h1 {
-    color: #796249;
-    font-family: 'KudryashevHeadline-Regular', Arial, sans-serif;
+    color: var(--secondary-color);
+    font-family: var(--font-primary);
     font-weight: 400;
 }
 
 h2 {
-    color: #2d261b;
-    font-family: 'KudryashevHeadline-Regular', Arial, sans-serif;
+    color: var(--text-color);
+    font-family: var(--font-primary);
     font-weight: 400;
+    margin-top: 2rem;
 }
 
-/* Sekcje z naprzemiennymi tłami */
+p {
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* ==========================================================================
+   Layout Components
+   ========================================================================== */
+.container {
+    font-family: var(--font-primary);
+}
+
+.main-bg {
+    background-color: var(--bg-primary);
+}
+
+.light-bg {
+    background-color: var(--bg-white);
+}
+
+.dark-bg {
+    background-color: var(--bg-dark);
+}
+
 .section-light {
-    background-color: #fcfaf6;
+    background-color: var(--bg-primary);
     padding: 2rem 0;
 }
 
 .section-dark {
-    background-color: #eee8df;
+    background-color: var(--bg-secondary);
     padding: 2rem 0;
 }
 
-/* Stylizacje przycisków */
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+.navbar {
+    background-color: var(--bg-primary) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand,
+.brand {
+    font-family: var(--font-secondary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4A4A4F !important;
+}
+
+.nav-link {
+    color: var(--secondary-color) !important;
+    font-family: var(--font-primary);
+    font-weight: 400;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-fallback {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.hero-section .hero-content .hero-title {
+    font-family: var(--font-primary);
+    font-size: 4rem;
+    font-weight: 300;
+    margin: 0;
+    letter-spacing: 28px;
+    color: white !important;
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.7);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn,
 .btn-primary,
-.btn-custom {
-    background-color: #85654e;
+.btn-custom,
+.btn-signup,
+.btn-edit,
+.btn-close {
+    background-color: var(--primary-color);
     color: #fafafa;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    font-family: 'KudryashevHeadline-Regular', Arial, sans-serif;
-    font-weight: 400;
-    transition: all 0.3s ease;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius);
+    font-family: var(--font-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: var(--transition);
+    border-bottom: 2px solid transparent;
 }
 
+.btn:hover,
 .btn-primary:hover,
-.btn-custom:hover {
-    background-color: #6b4f3e;
+.btn-custom:hover,
+.btn-signup:hover,
+.btn-edit:hover,
+.btn-close:hover {
+    background-color: var(--primary-dark);
     color: #fafafa;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    border-bottom: 2px solid var(--primary-dark);
 }
 
-/* Stopka */
+/* Button Variants */
+.btn-delete {
+    background-color: var(--accent-color);
+}
+
+.btn-delete:hover {
+    background-color: #d63e0f;
+    border-bottom: 2px solid #d63e0f;
+}
+
+.btn-like {
+    background: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+.btn-like:hover {
+    background: var(--accent-color);
+    color: #fafafa;
+    border-bottom: 2px solid #d63e0f;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 .footer {
     background-color: #635044;
     color: #fafafa;
@@ -102,9 +260,20 @@ h2 {
     opacity: 1;
 }
 
+
+
+/* ==========================================================================
+   Recipe Cards
+   ========================================================================== */
 .card {
     border: none;
     background-color: transparent;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 1.5rem;
 }
 
 .image-container {
@@ -113,10 +282,18 @@ h2 {
 
 .image-flash {
     position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #6b4f3e;
+    top: 5%;
+    min-width: 28%;
+    right: -1px;
+    background-color: var(--primary-dark);
+    border-radius: 23px 0 0 23px;
+}
+
+.recipe-badge {
+    color: white;
+    margin: 8px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
 }
 
 .scale {
@@ -124,12 +301,102 @@ h2 {
     height: auto;
 }
 
-.author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
+.recipe-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(133, 101, 78, 0.1);
 }
 
+.recipe-btn-minimal {
+    color: var(--primary-color);
+    font-family: var(--font-secondary);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+    border-bottom: 1px solid transparent;
+}
+
+.recipe-btn-minimal:hover {
+    color: var(--primary-dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--primary-dark);
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+.recipes-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.recipes-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-link {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+.post-link:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.link {
+    color: #23BBBB;
+    text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+    color: var(--bg-dark);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Pagination
+   ========================================================================== */
+.pagination {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.pagination li {
+    list-style: none;
+}
+
+.page-link {
+    color: var(--primary-color);
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.page-link:hover {
+    background-color: var(--primary-color);
+    color: #fafafa;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Masthead Section
+   ========================================================================== */
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -140,7 +407,7 @@ h2 {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: var(--bg-dark);
     color: white;
     position: relative;
 }
@@ -157,21 +424,11 @@ h2 {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: var(--bg-dark);
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
     z-index: 100;
-}
-
-.post-link {
-    text-decoration: none;
-    color: #445261;
-}
-
-.post-link:hover,
-.page-link {
-    color: #E84610;
 }
 
 .post-title {
@@ -184,55 +441,15 @@ h2 {
     color: lightgray;
 }
 
-.btn-signup,
-.btn-edit {
-    background-color: #85654e;
-    color: #fafafa;
-    font-family: 'KudryashevHeadline-Regular', Arial, sans-serif;
-    font-weight: 400;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    transition: all 0.3s ease;
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+.red-o {
+    color: var(--accent-color);
 }
 
-.btn-signup:hover,
-.btn-signup:active,
-.btn-edit:hover,
-.btn-edit:active {
-    background-color: #6b4f3e;
-    color: #fafafa;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.link {
-    color: #23BBBB;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #445261;
-    text-decoration: underline;
-}
-
-.btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
-}
-
-.btn-delete {
-    color: #fff;
-    background: #E84610;
-}
-
-.btn-like:hover,
-.btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
+.thin {
+    font-weight: 300;
 }
 
 .faded {
@@ -243,77 +460,83 @@ h2 {
     color: rgb(222, 146, 168);
 }
 
-/* Dodatkowe style dla eleganckiego wyglądu */
-.container {
-    font-family: 'KudryashevHeadline-Regular', Arial, sans-serif;
-}
-
-/* Karty przepisów */
-.card {
-    border: none;
-    background-color: transparent;
-    border-radius: 0.5rem;
-    overflow: hidden;
-}
-
-.card-body {
-    padding: 1.5rem;
-}
-
-/* Lepsza czytelność tekstu */
-.card-text,
-p {
-    line-height: 1.6;
-    color: #2d261b;
-}
-
-/* Stylizacja linków */
-.post-link {
-    text-decoration: none;
-    color: #796249;
-    transition: color 0.3s ease;
-}
-
-.post-link:hover {
-    color: #85654e;
-    text-decoration: none;
-}
-
-/* Nawigacja */
-.navbar {
-    background-color: #fcfaf6 !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-brand {
-    color: #796249 !important;
-    font-family: 'KudryashevHeadline-Regular', Arial, sans-serif;
-    font-weight: 400;
-}
-
-.nav-link {
-    color: #796249 !important;
-    font-family: 'KudryashevHeadline-Regular', Arial, sans-serif;
-    font-weight: 400;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: #85654e !important;
-}
-
-/* Responsywność dla lepszego wyglądu na urządzeniach mobilnych */
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
 @media (max-width: 768px) {
     .section-light,
     .section-dark {
         padding: 1.5rem 0;
     }
     
+    .btn,
     .btn-primary,
     .btn-custom,
     .btn-signup,
-    .btn-edit {
+    .btn-edit,
+    .btn-delete,
+    .btn-close,
+    .btn-like {
         padding: 0.5rem 1rem;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+    }
+    
+    .recipe-btn-minimal {
+        font-size: 0.8rem;
+    }
+    
+    .recipe-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    
+    .page-link {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        margin: 0 2px;
+    }
+    
+    h2 {
+        margin-top: 1.5rem;
+    }
+    
+    /* Hero section mobile */
+    .hero-section {
+        height: 80vh;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand,
+    .brand {
+        font-size: 1.2rem;
+    }
+    
+    .masthead {
+        height: 25vh;
+    }
+    
+    .recipe-badge {
+        font-size: 0.65rem;
+    }
+    
+    /* Hero section small mobile */
+    .hero-section {
+        height: 70vh;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
     }
 }
