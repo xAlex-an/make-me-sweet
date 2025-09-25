@@ -42,7 +42,7 @@
                     <div class="mb-5">
                         <h3 class="h4 fw-light mb-4" style="color: #8B7355;">Ingredients</h3>
                         <div class="text-secondary" style="line-height: 1.8;">
-                            {{ recipe.ingredients|linebreaks }}
+                            {{ recipe.ingredients|safe }}
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
                     <div class="mb-5">
                         <h3 class="h4 fw-light mb-4" style="color: #8B7355;">Instructions</h3>
                         <div class="text-secondary" style="line-height: 1.8;">
-                            {{ recipe.instructions|linebreaks }}
+                            {{ recipe.instructions|safe }}
                         </div>
                     </div>
 
