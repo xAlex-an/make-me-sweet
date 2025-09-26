@@ -9,7 +9,7 @@
 <html class="h-100" lang="en">
 
 <head>
-    <title>MakeMeSweet</title>
+    <title>Make Me Sweet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Google Fonts CSS -->
@@ -29,38 +29,87 @@
 
 <body class="d-flex flex-column h-100 main-bg">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <!-- Top Banner -->
+    <div class="top-banner">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Make Me Sweet</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <p class="text-center mb-0 py-2">🍰 New Recipe Every Thursday</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <!-- Mobile: Hamburger menu on left -->
+            <button class="navbar-toggler order-0 order-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+            
+            <!-- Logo - centered on mobile, centered on desktop -->
+            <a class="navbar-brand order-1 mx-auto mx-lg-auto" href="{% url 'home' %}">
+                <img src="{% static 'images/logo_recipe.png' %}" alt="Make Me Sweet" class="logo" style="height: 9rem;">
+            </a>
+            
+            <!-- Social Icons - visible on desktop, hidden in collapse on mobile -->
+            <div class="d-none d-lg-flex order-2 social-icons-desktop">
+                <a href="#" class="nav-link social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="nav-link social-link" aria-label="Pinterest">
+                    <i class="fab fa-pinterest"></i>
+                </a>
+                <a href="#" class="nav-link social-link" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="nav-link social-link" aria-label="Twitter/X">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+            
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse order-3 order-lg-1" id="navbarContent">
+                <!-- Navigation Links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}">Home</a>
+                            href="{% url 'home' %}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'home' %}">CAKE</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">LOGOUT</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_signup' %}">Register</a>
+                            href="{% url 'account_signup' %}">REGISTER</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">LOGIN</a>
                     </li>
                     {% endif %}
-
                 </ul>
-                <span class="navbar-text text-muted">
-                    bake with me
-                </span>
+                
+                <!-- Social Icons for mobile - inside collapse -->
+                <div class="d-lg-none navbar-nav social-icons-mobile justify-content-center">
+                    <div class="d-flex justify-content-center gap-3 py-2">
+                        <a href="#" class="nav-link social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="nav-link social-link" aria-label="Pinterest">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                        <a href="#" class="nav-link social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="nav-link social-link" aria-label="Twitter/X">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -93,13 +142,72 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-white">Make Me Sweet 2025</p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i>
-        </p>
+    <footer class="footer mt-auto">
+        <div class="container">
+            <div class="row">
+                <!-- Logo Section -->
+                <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                    <div class="footer-logo">
+                        <img src="{% static 'images/logo_recipe.png' %}" alt="Make Me Sweet" class="footer-logo-img">
+                        <p class="footer-brand-text">Make Me Sweet</p>
+                        <p class="footer-tagline">Crafting sweet memories</p>
+                    </div>
+                </div>
+                
+                <!-- Blog Schedule -->
+                <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+                    <h5 class="footer-heading">Blog Updates</h5>
+                    <ul class="footer-list">
+                        <li><span class="day">New Recipes:</span> Every Thursday</li>
+                        <li><span class="day">Baking Tips:</span> Tuesdays</li>
+                        <li><span class="day">Recipe Videos:</span> Weekends</li>
+                        <li><span class="note">*Follow for weekly sweet inspiration</span></li>
+                        <li><span class="day">Newsletter:</span> Monthly</li>
+                    </ul>
+                </div>
+                
+                <!-- Seasonal Breaks -->
+                <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+                    <h5 class="footer-heading">Holiday Schedule</h5>
+                    <ul class="footer-list">
+                        <li><span class="season">Spring Break:</span> 14/10 - 19/10</li>
+                        <li><span class="season">Christmas:</span> 21/12 - 28/12</li>
+                        <li><span class="season">New Year:</span> 01/01 - 04/01</li>
+                        <li><span class="season">Easter:</span> 17/04 - 24/04</li>
+                        <li><span class="season">Summer:</span> 06/07 - 31/07</li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="col-lg-3 col-md-4 mb-4 mb-lg-0">
+                    <h5 class="footer-heading">Contact & Location</h5>
+                    <ul class="footer-list footer-contact">
+                        <li>
+                            <i class="fas fa-envelope footer-icon"></i>
+                            <a href="mailto:hello@makemesweet.com">hello@makemesweet.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone footer-icon"></i>
+                            <a href="tel:+4428404864">+44 11 11 11 11</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt footer-icon"></i>
+                            <span>Warrington, UK</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <hr class="footer-divider">
+                    <p class="footer-copyright text-center">
+                        © 2025 Make Me Sweet. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
