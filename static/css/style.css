@@ -12,7 +12,7 @@
     --bg-secondary: #eee8df;
     --bg-white: #fff;
     --bg-dark: #445261;
-    --font-primary:"Instrument Sans", sans-serif;
+    --font-primary: "Instrument Sans", sans-serif;
     --font-secondary: 'Lato', sans-serif;
     --border-radius: 6px;
     --transition: all 0.2s ease;
@@ -90,25 +90,69 @@ p {
 }
 
 /* ==========================================================================
+   Top Banner
+   ========================================================================== */
+.top-banner {
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.top-banner p {
+    margin: 0;
+    color: var(--text-color);
+}
+
+/* ==========================================================================
    Navigation
    ========================================================================== */
 .navbar {
     background-color: var(--bg-primary) !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: none !important;
+    border: none !important;
+    border-bottom: none !important;
 }
 
-.navbar-brand,
-.brand {
+.navbar-brand {
     font-family: var(--font-secondary);
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F !important;
 }
 
+/* Logo positioning - centered on larger screens */
+@media (min-width: 992px) {
+    .navbar-brand.mx-lg-auto {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+    }
+}
+
+/* Mobile logo positioning */
+@media (max-width: 991px) {
+    .navbar-brand {
+        position: static;
+        transform: none;
+    }
+}
+
+.logo {
+    max-height: 9rem;
+    width: auto;
+    margin-top: 3rem;
+}
+
 .nav-link {
     color: var(--secondary-color) !important;
     font-family: var(--font-primary);
     font-weight: 400;
+    font-size: 15px;
     transition: var(--transition);
 }
 
@@ -116,9 +160,49 @@ p {
     color: var(--primary-color) !important;
 }
 
+/* Social Media Icons */
+.social-icons-desktop,
+.social-icons-mobile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-link {
+    color: var(--text-muted) !important;
+    font-size: 1.2rem;
+    padding: 0.5rem !important;
+    border-radius: 50%;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.social-link:hover {
+    color: var(--primary-color) !important;
+    background-color: var(--bg-secondary);
+    transform: translateY(-2px);
+}
+
+/* Desktop social icons positioning */
+.social-icons-desktop {
+    margin-left: auto;
+}
+
+/* Mobile social icons styling */
+.social-icons-mobile {
+    border-top: 1px solid var(--bg-secondary);
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
 /* ==========================================================================
-   Hero Section
-   ========================================================================== */
+Hero Section
+========================================================================== */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -175,8 +259,8 @@ p {
     text-transform: uppercase;
 }
 /* ==========================================================================
-   Buttons
-   ========================================================================== */
+Buttons
+========================================================================== */
 .btn,
 .btn-primary,
 .btn-custom,
@@ -210,61 +294,244 @@ p {
     border-bottom: 2px solid var(--primary-dark);
 }
 
-/* Button Variants */
-.btn-delete {
-    background-color: var(--accent-color);
-}
-
-.btn-delete:hover {
-    background-color: #d63e0f;
-    border-bottom: 2px solid #d63e0f;
-}
-
-.btn-like {
-    background: transparent;
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
-}
-
-.btn-like:hover {
-    background: var(--accent-color);
-    color: #fafafa;
-    border-bottom: 2px solid #d63e0f;
-}
-
 /* ==========================================================================
-   Footer
-   ========================================================================== */
+Footer
+========================================================================== */
 .footer {
-    background-color: #635044;
+    background-color: var(--primary-color);
     color: #fafafa;
-    padding: 2rem 0;
+    padding: 3rem 0 1.5rem 0;
     margin-top: 3rem;
+    font-family: var(--font-primary);
 }
 
-.footer h3,
-.footer h4,
-.footer h5 {
+/* Footer Logo Section */
+.footer-logo {
+    text-align: center;
+}
+
+.footer-logo-img {
+    height: 15rem;
+    margin-bottom: 0.5rem;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.footer-brand-text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: -3.5rem;
     color: #fafafa;
+}
+
+.footer-tagline {
+    font-size: 1rem;
+    color: rgba(250, 250, 250, 0.8);
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+/* Footer Headings */
+.footer-heading {
+    color: #fafafa;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(250, 250, 250, 0.2);
+    font-family: var(--font-primary);
+}
+
+/* Footer Lists */
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(250, 250, 250, 0.9);
+}
+
+.footer-list .day {
+    font-weight: 600;
+    color: #fafafa;
+}
+
+.footer-list .season {
+    font-weight: 600;
+}
+
+.footer-list .note {
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* Contact Section */
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.footer-icon {
+    width: 1.2rem;
+    margin-right: 0.75rem;
+    font-size: 0.9rem;
 }
 
 .footer a {
-    color: #fafafa;
+    color: rgba(250, 250, 250, 0.9);
     text-decoration: none;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    transition: var(--transition);
 }
 
 .footer a:hover {
     color: #fafafa;
-    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Footer Divider and Copyright */
+.footer-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(250, 250, 250, 0.3),
+        transparent
+    );
+    margin: 1.5rem 0 1rem 0;
+}
+
+.footer-copyright {
+    color: rgba(250, 250, 250, 0.7);
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+/* Tablet styles (768px - 991px) */
+@media (max-width: 991.98px) and (min-width: 768px) {
+    .footer {
+        padding: 2.5rem 0 1.5rem 0;
+    }
+    
+    .footer-logo {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .footer-heading {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 1.2rem;
+    }
+    
+    .footer-list {
+        text-align: center;
+    }
+    
+    .footer-list li {
+        font-size: 0.95rem;
+    }
+    
+    .footer-contact li {
+        justify-content: center;
+    }
+    
+    .footer-brand-text {
+        font-size: 1.4rem;
+    }
+    
+    .footer-tagline {
+        font-size: 0.95rem;
+    }
+    
+    /* Recipe section title responsive */
+    .recipes-main-title {
+        font-size: 3rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .recipes-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile styles (767px and down) */
+@media (max-width: 767.98px) {
+    .footer {
+        padding: 2rem 0 1rem 0;
+    }
+    
+    .footer-logo-img {
+        height: 11rem;
+    }
+    
+    .footer-brand-text {
+        font-size: 1.3rem;
+    }
+    
+    .footer-tagline {
+        font-size: 0.95rem;
+    }
+    
+    .footer-heading {
+        font-size: 1.15rem;
+        margin-top: 2rem;
+    }
+    
+    .footer-list li {
+        font-size: 0.95rem;
+    }
+    
+    /* Recipe section title responsive */
+    .recipes-main-title {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .recipes-subtitle {
+        font-size: 1rem;
+    }
 }
 
 
 
 /* ==========================================================================
-   Recipe Cards
-   ========================================================================== */
+Recipe Section Title
+========================================================================== */
+.recipes-section-header {
+    background-color: var(--bg-primary);
+    margin-bottom: 2rem;
+}
+
+.recipes-main-title {
+    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.recipes-subtitle {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+/* ==========================================================================
+Recipe Cards
+========================================================================== */
 .card {
     border: none;
     background-color: transparent;
@@ -329,27 +596,27 @@ p {
 /* ==========================================================================
    Links
    ========================================================================== */
-.recipes-link {
-    text-decoration: none;
-    color: inherit;
-}
+   .recipes-link {
+       text-decoration: none;
+       color: inherit;
+    }
 
-.recipes-link:hover {
-    text-decoration: none;
-    color: inherit;
-}
-
-.post-link {
-    text-decoration: none;
-    color: var(--secondary-color);
-    transition: var(--transition);
-}
-
-.post-link:hover {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
+    .recipes-link:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .post-link {
+        text-decoration: none;
+        color: var(--secondary-color);
+        transition: var(--transition);
+    }
+    
+    .post-link:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
 .link {
     color: #23BBBB;
     text-decoration: none;
@@ -362,8 +629,8 @@ p {
 }
 
 /* ==========================================================================
-   Pagination
-   ========================================================================== */
+Pagination
+========================================================================== */
 .pagination {
     margin-top: 3rem;
     margin-bottom: 2rem;
@@ -395,8 +662,8 @@ p {
 }
 
 /* ==========================================================================
-   Masthead Section
-   ========================================================================== */
+Masthead Section
+========================================================================== */
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -444,8 +711,8 @@ p {
 /* ==========================================================================
    Utility Classes
    ========================================================================== */
-.red-o {
-    color: var(--accent-color);
+   .red-o {
+       color: var(--accent-color);
 }
 
 .thin {
@@ -461,8 +728,8 @@ p {
 }
 
 /* ==========================================================================
-   Responsive Design
-   ========================================================================== */
+Responsive Design
+========================================================================== */
 @media (max-width: 768px) {
     .section-light,
     .section-dark {
@@ -538,5 +805,23 @@ p {
     
     .hero-content {
         padding: 0 1rem;
+    }
+}
+/* Mobile responsive adjustments */
+@media (max-width: 991px) {
+    .navbar-brand.mx-auto {
+        position: static;
+        transform: none;
+        margin: 0 auto;
+    }
+    
+    .navbar-toggler {
+        order: -1;
+    }
+    
+    .navbar-brand {
+        order: 0;
+        flex: 1;
+        text-align: center;
     }
 }
