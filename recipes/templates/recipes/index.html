@@ -38,7 +38,8 @@
                   {% if "placeholder" in recipe.featured_image.url %}
                     <img class="card-img-top" src="{% static 'images/apple.pie.jpg' %}" alt="placeholder image">
                   {% else %}
-                    <img class="card-img-top" src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
+                    <img class="card-img-top" src="{{ recipe.featured_image.url|add:'?q_auto,f_auto,w_600' }}" alt="{{ recipe.title }}">
+
                   {% endif %}
                   <div class="image-flash">
                     <p class="recipe-badge">🍂 Autumn Special</p>
