@@ -52,9 +52,11 @@
                     <img class="card-img-top" src="{{ recipe.featured_image.url|add:'?q_auto,f_auto,w_600' }}" alt="{{ recipe.title }}">
 
                   {% endif %}
+                  {% if recipe.tag %}
                   <div class="image-flash">
-                    <p class="recipe-badge">🍂 Autumn Special</p>
+                    <p class="recipe-badge">{{ recipe.get_tag_display }}</p>
                   </div>
+                  {% endif %}
                 </div>
                 <a href="{% url 'recipes_detail' recipe.slug %}" class="recipes-link">
                   <h2 class="card-title">{{ recipe.title }}</h2>
