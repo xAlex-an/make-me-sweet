@@ -550,7 +550,7 @@ Recipe Cards
 .image-flash {
     position: absolute;
     top: 5%;
-    min-width: 28%;
+    min-width: 23%;
     right: -1px;
     background-color: var(--primary-dark);
     border-radius: 23px 0 0 23px;
