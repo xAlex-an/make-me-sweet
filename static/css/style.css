@@ -294,6 +294,45 @@ Buttons
     border-bottom: 2px solid var(--primary-dark);
 }
 
+/* Scrolling Bar Styles */
+
+
+.scrolling-bar {
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: var(--bg-secondary);
+  padding: 10px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  color: #5c4a3d;
+}
+
+.scrolling-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  animation: scroll-left 46s linear infinite;
+
+}
+
+.scrolling-content span {
+  display: inline-block;
+  margin: 0 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.scrolling-content {
+  display: inline-block;
+  animation: scroll-left 21s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* ==========================================================================
 Footer
 ========================================================================== */
@@ -823,5 +862,170 @@ Responsive Design
         order: 0;
         flex: 1;
         text-align: center;
+    }
+}
+
+/* ==========================================================================
+   Desserts Section
+   ========================================================================== */
+.desserts-title {
+    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    line-height: 1.2;
+}
+
+.desserts-description {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.dessert-item {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    width: 100%;
+    height: 450px;
+}
+
+.dessert-item:hover {
+    transform: translateY(-5px);
+}
+
+.dessert-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.dessert-item:hover .dessert-image {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .desserts-title {
+        font-size: 3rem;
+        letter-spacing: 1.5px;
+        text-align: center;
+    }
+    
+    .desserts-description {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+    
+    .dessert-item {
+        height: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .desserts-title {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .desserts-description {
+        font-size: 1rem;
+    }
+    
+    .dessert-item {
+        height: 280px;
+    }
+}
+
+/* ==========================================================================
+   Reels Gallery Section
+   ========================================================================== */
+.reels-gallery {
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+}
+
+.reels-section-header {
+    margin-bottom: 3rem;
+}
+
+.reels-title {
+    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.reels-subtitle {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+.reel-embed {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+}
+
+.reel-embed:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.reel-embed blockquote {
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* Responsive adjustments for reels */
+@media (max-width: 991px) {
+    .reels-title {
+        font-size: 3rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .reels-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .reel-embed {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .reels-title {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+    
+    .reels-subtitle {
+        font-size: 1rem;
+    }
+    
+    .reel-embed {
+        padding: 0.5rem;
     }
 }
