@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cloudinary %}
+{% block content %}
+
+<!-- Recipes List Page - Only recipes, no other sections -->
+<div class="container-fluid" id="recipes">
+  
+  <!-- Section Title -->
+  <div class="row">
+    <div class="col-12">
+      <div class="recipes-section-header text-center py-5">
+        <h2 class="recipes-main-title">Sweet Recipes</h2>
+        <p class="recipes-subtitle">Discover delightful desserts and baking inspirations</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+
+    <!-- Recipe Entries Column -->
+    <div class="col-12 mt-3 left">
+      <div class="row">
+        {% for recipe in recipe_list %}
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="image-container">
+                  {% if "placeholder" in recipe.featured_image.url %}
+                    <img class="card-img-top" src="{% static 'images/apple.pie.jpg' %}" alt="placeholder image">
+                  {% else %}
+                    <img class="card-img-top" src="{{ recipe.featured_image.url|add:'?q_auto,f_auto,w_600' }}" alt="{{ recipe.title }}">
+
+                  {% endif %}
+                  {% if recipe.tag %}
+                  <div class="image-flash">
+                    <p class="recipe-badge">{{ recipe.get_tag_display }}</p>
+                  </div>
+                  {% endif %}
+                </div>
+                <a href="{% url 'recipes_detail' recipe.slug %}" class="recipes-link">
+                  <h2 class="card-title">{{ recipe.title }}</h2>
+                </a>
+                <p class="card-text">{{ recipe.excerpt|safe }}</p>
+                <div class="recipe-meta">
+                  <span class="card-text text-muted h6">{{ recipe.created_on }}</span>
+                  <a href="{% url 'recipes_detail' recipe.slug %}" class="recipe-btn-minimal">
+                    Read more →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center my-4">
+          {% if page_obj.has_previous %}
+            {% if page_obj.previous_page_number == 1 %}
+              <li>
+                <a href="{% url 'home' %}" class="page-link">&laquo; PREV</a>
+              </li>
+            {% else %}
+              <li>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+              </li>
+            {% endif %}
+          {% endif %}
+          {% if page_obj.has_next %}
+            <li>
+              <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}
