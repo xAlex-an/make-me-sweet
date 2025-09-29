@@ -10,8 +10,25 @@ from .forms import CommentForm
 class RecipeList(generic.ListView):
     """Generic class-based view for a list of recipes."""
     queryset = Recipe.objects.filter(status=1)
-    template_name = "recipes/index.html"
     paginate_by = 6
+    
+    def get_template_names(self):
+        """
+        Return different templates based on page number.
+        First page shows full index.html with all sections,
+        subsequent pages show only recipes_list.html
+        """
+        page = self.request.GET.get('page', '1')
+        try:
+            page_num = int(page)
+        except (ValueError, TypeError):
+            page_num = 1
+            
+        if page_num == 1:
+            return ["recipes/index.html"]
+        else:
+            return ["recipes/recipes_list.html"]
+
 
 def recipes_detail(request, slug):
     """
@@ -56,6 +73,7 @@ def recipes_detail(request, slug):
         },
     )
 
+
 def comment_edit(request, slug, comment_id):
     """
     view to edit comments
@@ -82,6 +100,7 @@ def comment_edit(request, slug, comment_id):
             messages.add_message(request, messages.ERROR, 'Oops! There was a problem updating your comment.')
 
     return HttpResponseRedirect(reverse('recipes_detail', args=[slug]))
+
 
 def comment_delete(request, slug, comment_id):
     """
