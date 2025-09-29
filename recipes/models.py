@@ -6,6 +6,22 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+# Tag choices for recipe badges
+TAG_CHOICES = [
+    ('autumn', '🍂 Autumn Special'),
+    ('winter', '❄️ Winter Warmth'),
+    ('spring', '🌸 Spring Fresh'),
+    ('summer', '☀️ Summer Delight'),
+    ('holiday', '🎄 Holiday Favorite'),
+    ('quick', '⚡ Quick & Easy'),
+    ('healthy', '🥗 Healthy Choice'),
+    ('decadent', '💎 Indulgent Treat'),
+    ('classic', '👑 Classic Recipe'),
+    ('new', '✨ New Recipe'),
+    ('popular', '🔥 Popular Choice'),
+    ('', 'No Tag'),  # Option for no tag
+]
+
 
 class Recipe(models.Model):
     """
@@ -21,6 +37,13 @@ class Recipe(models.Model):
     ingredients = models.TextField()
     instructions = models.TextField()
     excerpt = models.TextField(blank=True)
+    tag = models.CharField(
+        max_length=20,
+        choices=TAG_CHOICES,
+        blank=True,
+        default='',
+        help_text="Choose a tag to display as a badge on the recipe"
+    )
     status = models.IntegerField(choices=STATUS, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
