@@ -3,38 +3,41 @@
 {% load cloudinary %}
 {% block content %}
 
+<main>
 <!-- Hero Section with Video Background -->
 <section class="hero-section">
   <div class="hero-video-container">
-    <video class="hero-video" autoplay muted loop playsinline>
+    <video class="hero-video" autoplay muted loop playsinline aria-label="Decorative background video showing baking process">
       <!-- Cloudinary video - prostsze podejście -->
       <source src="https://res.cloudinary.com/dhkobp00x/video/upload/q_auto,f_mp4,w_1920,h_1080/hero_1_owonkh.mp4" type="video/mp4" media="(min-width: 1200px)">
       <source src="https://res.cloudinary.com/dhkobp00x/video/upload/q_auto,f_mp4,w_1280,h_720/hero_1_owonkh.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="https://res.cloudinary.com/dhkobp00x/video/upload/q_auto,f_mp4,w_640,h_360/hero_1_owonkh.mp4" type="video/mp4">
+      <!-- Caption tracks for accessibility -->
+      <track kind="captions" src="{% static 'captions/hero-video-en.vtt' %}" srclang="en" label="English">
       <!-- Fallback image if video doesn't load -->
-      <img src="{% static 'images/hero-fallback.jpg' %}" alt="Baking Hero Background" class="hero-fallback">
+      <img src="{% static 'images/hero_fallback.jpg' %}" alt="Baking Hero Background" class="hero-fallback">
     </video>
   </div>
   
-  <div class="hero-content">
+  <header class="hero-content">
     <div class="hero-text">
       <h1 class="hero-title">MAKE ME SWEET</h1>
     </div>
-  </div>
+  </header>
 </section>
 
-<!-- index.html content starts here -->
-<div class="container-fluid" id="recipes">
+<!-- Recipes Section -->
+<section id="recipes" class="container-fluid">
   
-  <!-- Section Title -->
-  <div class="row">
+  <!-- Section Header -->
+  <header class="row">
     <div class="col-12">
       <div class="recipes-section-header text-center py-5">
         <h2 class="section-title">Sweet Recipes</h2>
         <p class="section-subtitle">Discover delightful desserts and baking inspirations</p>
       </div>
     </div>
-  </div>
+  </header>
   
   <div class="row">
 
@@ -43,7 +46,7 @@
       <div class="row">
         {% for recipe in recipe_list %}
           <div class="col-md-4">
-            <div class="card mb-4">
+            <article class="card mb-4">
               <div class="card-body">
                 <div class="image-container">
                   {% if "placeholder" in recipe.featured_image.url %}
@@ -58,18 +61,20 @@
                   </div>
                   {% endif %}
                 </div>
-                <a href="{% url 'recipes_detail' recipe.slug %}" class="recipes-link">
-                  <h2 class="card-title">{{ recipe.title }}</h2>
-                </a>
+                <header>
+                  <h3 class="card-title">
+                    <a href="{% url 'recipes_detail' recipe.slug %}" class="recipes-link">{{ recipe.title }}</a>
+                  </h3>
+                </header>
                 <p class="card-text">{{ recipe.excerpt|safe }}</p>
-                <div class="recipe-meta">
-                  <span class="card-text text-muted h6">{{ recipe.created_on }}</span>
+                <footer class="recipe-meta">
+                  <time class="card-text text-muted h6" datetime="{{ recipe.created_on|date:'c' }}">{{ recipe.created_on }}</time>
                   <a href="{% url 'recipes_detail' recipe.slug %}" class="recipe-btn-minimal">
                     Read more →
                   </a>
-                </div>
+                </footer>
               </div>
-            </div>
+            </article>
           </div>
           {% if forloop.counter|divisibleby:3 %}
             </div>
@@ -124,7 +129,7 @@
   <!-- Desserts Section -->
   <section class="py-5 my-5">
     <div class="container">
-      <div class="row align-items-center g-4">
+      <header class="row align-items-center g-4">
         <div class="col-lg-6 col-md-12">
           <div class="px-3 py-4">
             <h2 class="section-title mb-4">Desserts for your soul mates ❤️</h2>
@@ -133,19 +138,19 @@
         </div>
         <div class="col-lg-6 col-md-12">
           <div class="dessert-item">
-            <img src="{% static 'images/soulmates.jpg' %}" alt="Delicious dessert" class="dessert-image img-fluid rounded shadow">
+            <img src="{% static 'images/soulmates.jpg' %}" alt="Delicious dessert for sharing with loved ones" class="dessert-image img-fluid rounded shadow">
           </div>
         </div>
-      </div>
+      </header>
     </div>
   </section>
 
  <section class="reels-gallery py-5 my-5">
   <div class="container">
-    <div class="text-center mb-5">
+    <header class="text-center mb-5">
       <h2 class="section-title">Discover Our Instagram</h2>
       <p class="section-subtitle">Watch our latest recipes in action</p>
-    </div>
+    </header>
 
     <div class="row justify-content-center">
       <!-- Reel 1 -->
@@ -181,14 +186,14 @@
 <!-- FAQ Section -->
 <section id="faq" class="my-5">
   <div class="container">
-    <div class="row">
+    <header class="row">
       <div class="col-12">
         <div class="text-center mb-5">
           <h2 class="section-title mb-4">FAQ</h2>
           <p class="section-subtitle">Everything you need to know about baking and our recipes</p>
         </div>
       </div>
-    </div>
+    </header>
     
     <div class="row justify-content-center">
       <div class="col-lg-10 col-md-12">
@@ -275,12 +280,14 @@
 <!-- About Me Section -->
 <section id="about" class="about-me py-5">
   <div class="container">
-    <div class="row align-items-center">
+    <article class="row align-items-center">
       <!-- Text Column -->
       <div class="col-lg-6">
         <div class="about-content">
-          <h2 class="section-title">About Me</h2>
-          <h3 class="about-subtitle">Creating Sweet Memories Together 💕</h3>
+          <header>
+            <h2 class="section-title">About Me</h2>
+            <h3 class="about-subtitle">Creating Sweet Memories Together 💕</h3>
+          </header>
           
           <p class="about-text">
             Welcome to my kitchen! I'm passionate about creating desserts that bring people together and create lasting memories. Every recipe I share comes from the heart, tested countless times to ensure they work perfectly in your home kitchen.
@@ -290,26 +297,26 @@
             My journey in baking started with simple cookies for family gatherings, and has evolved into a love affair with all things sweet. I believe that the best desserts are made with love, quality ingredients, and shared with those who matter most.
           </p>
           
-          <div class="about-signature">
+          <footer class="about-signature">
             <p class="signature-text">Happy Baking!</p>
             <p class="signature-name">- Your Sweet Chef</p>
-            <img src="{% static 'images/signature.png' %}" alt="Signature" class="signature-image" style="width: 8rem;">
-          </div>
+            <img src="{% static 'images/signature.png' %}" alt="Chef's signature" class="signature-image" style="width: 8rem;">
+          </footer>
         </div>
       </div>
       
       <!-- Image Column -->
       <div class="col-lg-6 mb-4 mb-lg-0">
         <div class="about-image">
-          <img src="{% static 'images/about_me.png' %}" alt="About Me" class="img-fluid rounded-3">
+          <img src="{% static 'images/about_me.png' %}" alt="About the chef - passionate baker in the kitchen" class="img-fluid rounded-3">
         </div>
       </div>
-    </div>
+    </article>
   </div>
 </section>
 
 <script async src="//www.instagram.com/embed.js"></script>
 
-</div>
+</main>
 <!-- index.html content ends here -->
 {% endblock %}
