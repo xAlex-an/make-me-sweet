@@ -250,9 +250,6 @@ The visual design emphasizes warmth and elegance with:
 
 ## Website Features
 
-*Note: Additional feature screenshots (hero section, recipe grid, recipe detail, login page) can be added to the `docs/screenshots/` directory for more comprehensive documentation.*
-
-### Current Features
 
 1. **Hero Video Section**
    - Autoplay background video with fallback image
