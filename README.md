@@ -439,6 +439,9 @@ Manual testing was performed on the site to ensure that all features worked as e
 
 ### Validation of HTML/CSS
 
+![W3C Validation Results](docs/screenshots/w3c.png)
+*W3C HTML and CSS validation showing no errors*
+
 - **HTML Validation:** W3C Markup Validator - No errors
 - **CSS Validation:** W3C CSS Validator - No errors
 - **JavaScript:** JSHint validation passed
