@@ -379,6 +379,64 @@ The website is fully responsive with optimized layouts for different screen size
 
 ## Testing
 
+### Manual Testing
+
+Manual testing was performed on the site to ensure that all features worked as expected. This comprehensive testing follows the Code Institute Capstone Project Pre-Submission Checklist requirements:
+
+#### User Experience & Navigation Tests
+
+| Test | Expected Result | Actual Result |
+|------|----------------|---------------|
+| Is the purpose of the application obvious to the user? | User immediately understands this is a recipe sharing website | ✅ Pass |
+| Can I navigate to where I need to go easily? | Clear navigation menu and intuitive layout | ✅ Pass |
+| Is the information layout logical and beneficial to the user? | Recipe cards, clear hierarchy, easy-to-find content | ✅ Pass |
+| Can I easily read all text and identify interactive elements? | Good contrast, clear fonts, obvious buttons/links | ✅ Pass |
+| Is the site responsive across different devices/screen widths? | Works on desktop, tablet, and mobile | ✅ Pass |
+
+#### Authentication & User Management Tests
+
+| Test | Expected Result | Actual Result |
+|------|----------------|---------------|
+| Do I know if I'm logged in or not? | Clear indication of login status in navigation | ✅ Pass |
+| Can I register for an account? | Registration form works and creates account | ✅ Pass |
+| Can I log in with my credentials? | Login form authenticates user successfully | ✅ Pass |
+| Can I log out again? | Logout functionality works correctly | ✅ Pass |
+| Am I notified when I log in? | Success message appears upon login | ✅ Pass |
+| Am I notified when I log out? | Success message appears upon logout | ✅ Pass |
+
+#### CRUD Operations & Data Management Tests
+
+| Test | Expected Result | Actual Result |
+|------|----------------|---------------|
+| Can a logged-in user create a record via frontend form? | Users can create comments on recipes | ✅ Pass |
+| Are users notified when a record is created? | Success message when comment is posted | ✅ Pass |
+| Can a logged-in user edit a record they created? | Users can edit their own comments | ✅ Pass |
+| Are users notified when a record is edited? | Success message when comment is updated | ✅ Pass |
+| Can a logged-in user delete a record they created? | Users can delete their own comments | ✅ Pass |
+| Are users notified when a record is deleted? | Success message when comment is removed | ✅ Pass |
+
+#### Security & Access Control Tests
+
+| Test | Expected Result | Actual Result |
+|------|----------------|---------------|
+| Can a logged-out user manipulate another user's records? | No access to edit/delete others' comments | ✅ Pass |
+| Can only authorized users access restricted information? | Admin panel restricted to superusers only | ✅ Pass |
+| Are secret keys or environment variables hidden from source code? | All sensitive data in env.py and .gitignore | ✅ Pass |
+| Is debug set to False in production? | Debug=False in production environment | ✅ Pass |
+
+#### Additional Functionality Tests
+
+| Test | Expected Result | Actual Result |
+|------|----------------|---------------|
+| Click Home menu | Navigate to homepage successfully | ✅ Pass |
+| Click About menu | Navigate to about page successfully | ✅ Pass |
+| Navigate to recipe list | Display paginated recipe list | ✅ Pass |
+| Click individual recipe post | Display full recipe details | ✅ Pass |
+| Recipe pagination navigation | Navigate between recipe pages | ✅ Pass |
+| Access admin interface (superuser) | Admin can manage all content | ✅ Pass |
+| Video playback on hero section | Hero video plays correctly | ✅ Pass |
+| Social media links functionality | Links open in new tabs | ✅ Pass |
+
 ### Validation of HTML/CSS
 
 - **HTML Validation:** W3C Markup Validator - No errors
