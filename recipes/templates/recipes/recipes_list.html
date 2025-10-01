@@ -29,12 +29,7 @@
                   {% if "placeholder" in recipe.featured_image.url %}
                     <img class="card-img-top" src="{% static 'images/apple.pie.jpg' %}" alt="placeholder image">
                   {% else %}
-                    
-<img class="card-img-top"
-     src="https://res.cloudinary.com/dhkobp00x/image/upload/w_600,f_auto,q_auto/{{ recipe.featured_image.public_id }}.jpg"
-     alt="{{ recipe.title }}" loading="lazy" decoding="async">
-
-
+                    <img class="card-img-top" src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
                   {% endif %}
                   {% if recipe.tag %}
                   <div class="image-flash">

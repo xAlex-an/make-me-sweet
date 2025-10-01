@@ -8,7 +8,7 @@
 <section class="hero-section">
   <div class="hero-video-container">
     <video class="hero-video" autoplay muted loop playsinline aria-label="Decorative background video showing baking process">
-      <!-- Cloudinary video - prostsze podejście -->
+      <!-- Cloudinary video with HTTPS -->
       <source src="https://res.cloudinary.com/dhkobp00x/video/upload/q_auto,f_mp4,w_1920,h_1080/hero_1_owonkh.mp4" type="video/mp4" media="(min-width: 1200px)">
       <source src="https://res.cloudinary.com/dhkobp00x/video/upload/q_auto,f_mp4,w_1280,h_720/hero_1_owonkh.mp4" type="video/mp4" media="(min-width: 768px)">
       <source src="https://res.cloudinary.com/dhkobp00x/video/upload/q_auto,f_mp4,w_640,h_360/hero_1_owonkh.mp4" type="video/mp4">
@@ -52,8 +52,7 @@
                   {% if "placeholder" in recipe.featured_image.url %}
                     <img class="card-img-top" src="{% static 'images/apple.pie.jpg' %}" alt="placeholder image">
                   {% else %}
-                    <img class="card-img-top" src="{{ recipe.featured_image.url|add:'?q_auto,f_auto,w_600' }}" alt="{{ recipe.title }}">
-
+                    <img class="card-img-top" src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
                   {% endif %}
                   {% if recipe.tag %}
                   <div class="image-flash">
