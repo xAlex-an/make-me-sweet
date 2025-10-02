@@ -437,15 +437,92 @@ Manual testing was performed on the site to ensure that all features worked as e
 | Video playback on hero section | Hero video plays correctly | ✅ Pass |
 | Social media links functionality | Links open in new tabs | ✅ Pass |
 
-### Validation of HTML/CSS
+### Validation of CSS
 
 ![W3C Validation Results](docs/screenshots/w3c.png)
-*W3C HTML and CSS validation showing no errors*
+*W3C CSS validation showing no errors*
 
+#### HTML Validation - W3C Markup Validator 
 - **HTML Validation:** W3C Markup Validator - No errors
-- **CSS Validation:** W3C CSS Validator - No errors
+- **CSS Validation:** W3C CSS Validator - No errors  
 - **JavaScript:** JSHint validation passed
 - **Python:** PEP8 compliance verified
+
+#### 🌐 HTML Validation via Live URL
+
+Since the project uses Django Template Language (DTL), direct validation of .html template files was not possible. Instead, the final rendered markup was validated using the W3C Markup Validator via the deployed site:
+
+**Validation performed using the live site:** https://make-me-sweet-f649b0b1112e.herokuapp.com/
+
+![Live URL Validation](docs/screenshots/url_markup.png)
+*W3C Markup Validator results using the live deployed site URL*
+
+This method ensured that the actual output — including dynamic content — was fully compliant with HTML5 standards.
+
+#### HTML Validation Journey: Before & After
+
+**Before Fixes - Validation Errors Detected:**
+
+![HTML Validation Errors](docs/screenshots/markup_errors.png)
+*Nu Html Checker showing markup errors that needed to be resolved*
+
+**After Fixes - Validation Pass:**
+
+![HTML Validation Success](docs/screenshots/markup.png)
+*Nu Html Checker confirming all markup errors have been resolved*
+
+#### Resolved HTML Validation Issues
+
+**1. Meta Viewport Trailing Slash (Info)**
+```html
+<!-- Before (with trailing slash) -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- After (HTML5 compliant) -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+- **Issue:** Trailing slash on void elements not required in HTML5
+- **Impact:** Better HTML5 compliance and consistency
+- **Status:** ✅ Fixed
+
+**2. Section Accessibility Heading (Warning)**
+```html
+<!-- Before (nested heading) -->
+<section id="about" class="about-me py-5">
+  <div class="container">
+    <article class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="about-content">
+          <h2 class="section-title">About Me</h2>
+
+<!-- After (proper section structure) -->
+<section id="about" class="about-me py-5">
+  <div class="container">
+    <header>
+      <h2 class="section-title text-center mb-4">About Me</h2>
+    </header>
+    <article class="row align-items-center">
+```
+- **Issue:** Section lacked proper heading structure for accessibility
+- **Impact:** Better screen reader navigation and WCAG compliance
+- **Standard:** HTML5 semantics require section headings as direct children
+- **Status:** ✅ Fixed
+
+#### Validation Process Summary
+
+| Validation Stage | Status | Screenshot |
+|------------------|--------|------------|
+| Initial HTML Check | ❌ 2 Issues Found | [HTML Errors](docs/screenshots/markup_errors.png) |
+| Post-Fix Validation | ✅ All Issues Resolved | [HTML Success](docs/screenshots/markup.png) |
+| Live URL Validation | ✅ Django DTL Rendered Output | [Live Site Check](docs/screenshots/url_markup.png) |
+| CSS Validation | ✅ No Errors | [W3C Results](docs/screenshots/w3c.png) |
+| Final Compliance | ✅ 100% Valid | Full compliance achieved |
+
+#### Performance Optimizations Related to Validation
+- **Semantic HTML5:** Improved document structure and accessibility
+- **Proper ARIA labels:** Enhanced screen reader compatibility
+- **Valid markup:** Reduced browser parsing errors and improved rendering performance
+- **Accessibility compliance:** Better user experience for assistive technologies
 
 ### Lighthouse Audits
 
