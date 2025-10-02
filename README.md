@@ -448,6 +448,11 @@ Manual testing was performed on the site to ensure that all features worked as e
 - **JavaScript:** JSHint validation passed
 - **Python:** PEP8 compliance verified
 
+#### Python Code Validation
+
+![Python Linter Results](docs/screenshots/python_linter.png)
+*Python linter validation showing clean code with no errors*
+
 #### 🌐 HTML Validation via Live URL
 
 Since the project uses Django Template Language (DTL), direct validation of .html template files was not possible. Instead, the final rendered markup was validated using the W3C Markup Validator via the deployed site:
@@ -459,7 +464,7 @@ Since the project uses Django Template Language (DTL), direct validation of .htm
 
 This method ensured that the actual output — including dynamic content — was fully compliant with HTML5 standards.
 
-#### HTML Validation Journey: Before & After
+#### HTML Validation Before & After
 
 **Before Fixes - Validation Errors Detected:**
 
@@ -529,11 +534,24 @@ This method ensured that the actual output — including dynamic content — was
 ![Lighthouse Audit Results](docs/screenshots/lighthouse.png)
 *Lighthouse audit showing excellent performance and security scores*
 
+#### Audit Methodology
+**Testing Environment:** All Lighthouse audits were performed in **Chrome Incognito Mode** to ensure:
+- No browser extensions interference
+- No cached data affecting performance metrics
+- Clean testing environment without cookies or stored data
+- Accurate baseline performance measurements
+
 **Performance Metrics:**
 - Performance: 90+
 - Accessibility: 95+
 - Best Practices: 95+
 - SEO: 90+
+
+#### Key Performance Achievements
+- **Fast Loading:** Optimized images and efficient CSS delivery
+- **Accessibility:** Proper ARIA labels, semantic HTML, and keyboard navigation
+- **Best Practices:** HTTPS, secure headers, and modern web standards
+- **SEO Optimization:** Meta tags, structured data, and semantic markup
 
 ### Bugs
 
