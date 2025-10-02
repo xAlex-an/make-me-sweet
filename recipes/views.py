@@ -11,7 +11,7 @@ class RecipeList(generic.ListView):
     """Generic class-based view for a list of recipes."""
     queryset = Recipe.objects.filter(status=1)
     paginate_by = 6
-    
+
     def get_template_names(self):
         """
         Return different templates based on page number.
@@ -23,7 +23,7 @@ class RecipeList(generic.ListView):
             page_num = int(page)
         except (ValueError, TypeError):
             page_num = 1
-            
+
         if page_num == 1:
             return ["recipes/index.html"]
         else:
@@ -95,9 +95,17 @@ def comment_edit(request, slug, comment_id):
             comment.recipe = recipe
             comment.approved = False
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Your comment has been updated successfully!')
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'Comment updated successfully!'
+            )
         else:
-            messages.add_message(request, messages.ERROR, 'Oops! There was a problem updating your comment.')
+            messages.add_message(
+                request,
+                messages.ERROR,
+                'Oops! There was a problem updating your comment.'
+            )
 
     return HttpResponseRedirect(reverse('recipes_detail', args=[slug]))
 
@@ -112,8 +120,16 @@ def comment_delete(request, slug, comment_id):
 
     if comment.author == request.user:
         comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            'Comment deleted!'
+        )
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'You can only delete your own comments!'
+        )
 
     return HttpResponseRedirect(reverse('recipes_detail', args=[slug]))
