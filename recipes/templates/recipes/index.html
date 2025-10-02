@@ -40,7 +40,7 @@
   
   <div class="row">
 
-    <!-- Recipe Entries Column -->
+   <!-- Recipe Entries Column -->
     <div class="col-12 mt-3 left">
       <div class="row">
         {% for recipe in recipe_list %}
@@ -49,12 +49,12 @@
               <div class="card-body">
                 <div class="image-container">
                   {% if "placeholder" in recipe.featured_image.url %}
-                    <img class="card-img-top" src="{% static 'images/apple.pie.jpg' %}" alt="Sweet recipe placeholder - delicious apple pie">
+                     <img class="card-img-top" src="{% static 'images/apple.pie.jpg' %}" alt="placeholder image">
                   {% else %}
-                    <img class="card-img-top" src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }} - sweet recipe image">
+                     <img class="card-img-top" src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}">
                   {% endif %}
                   {% if recipe.tag %}
-                  <div class="image-flash">
+                   <div class="image-flash">
                     <p class="recipe-badge">{{ recipe.get_tag_display }}</p>
                   </div>
                   {% endif %}
