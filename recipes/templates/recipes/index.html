@@ -40,7 +40,7 @@
   
   <div class="row">
 
-   <!-- Recipe Entries Column -->
+    <!-- Recipe Entries Column -->
     <div class="col-12 mt-3 left">
       <div class="row">
         {% for recipe in recipe_list %}
@@ -79,29 +79,34 @@
         {% endfor %}
       </div>
     </div>
-      
-      <!-- Pagination directly under recipes -->
-      {% if is_paginated %}
-        <div class="row">
-          <div class="col-12">
-            <nav aria-label="Page navigation">
-              <ul class="pagination justify-content-center my-4">
-                {% if page_obj.has_previous %}
-                  <li>
-                    <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
-                  </li>
-                {% endif %}
-                {% if page_obj.has_next %}
-                  <li>
-                    <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
-                  </li>
-                {% endif %}
-              </ul>
-            </nav>
-          </div>
-        </div>
-      {% endif %}
-</div> 
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center my-4">
+          {% if page_obj.has_previous %}
+            {% if page_obj.previous_page_number == 1 %}
+              <li>
+                <a href="{% url 'home' %}" class="page-link">&laquo; PREV</a>
+              </li>
+            {% else %}
+              <li>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+              </li>
+            {% endif %}
+          {% endif %}
+          {% if page_obj.has_next %}
+            <li>
+              <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+
+  </div>
+</div>
+
       
     <!-- scrolling bar -->
   <div class="mt-5 scrolling-bar">
