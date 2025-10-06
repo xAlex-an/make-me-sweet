@@ -232,7 +232,6 @@ The desktop wireframes showcase the full-width layout optimized for larger scree
 The mobile wireframes demonstrate responsive design with optimized layouts for smaller screens and touch navigation:
 
 | ![Mobile Wireframe Main](docs/screenshots/mobile_wireframe.png) | ![Mobile Wireframe 2](docs/screenshots/mobile_wireframe_2.png) |
-| **Mobile Homepage** - Collapsed navigation with mobile-first design | **Mobile Recipe Pages** - Optimized content layout for mobile viewing |
 
 #### Authentication Wireframes
 
