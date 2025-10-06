@@ -25,7 +25,7 @@ TAG_CHOICES = [
 
 class Recipe(models.Model):
     """
-    Model representing a recipe with all necessary fields
+    Stores a single recipe entry related to a :model:`auth.User`
     """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -57,7 +57,7 @@ class Recipe(models.Model):
 
 class Comment(models.Model):
     """
-    Model representing a comment on a recipe
+    Stores comments related to a :model:`recipes.Recipe`
     """
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name="comments"
