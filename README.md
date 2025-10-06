@@ -5,7 +5,7 @@
 A Django-based recipe sharing website featuring beautiful dessert recipes with Cloudinary integration for media management. This platform allows users to discover, share, and enjoy delightful dessert recipes with an elegant, user-friendly interface.
 
 ## Responsivity Example Image
-![Mockup](docs/screenshots/mockup.png)
+![Mockup](docs/screenshots/Mockup.png)
 ### Desktop, Tablet & Mobile Views
 
 
