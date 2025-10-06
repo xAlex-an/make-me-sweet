@@ -8,7 +8,14 @@ from .forms import CommentForm
 
 # Create your views here.
 class RecipeList(generic.ListView):
-    """Generic class-based view for a list of recipes."""
+    """
+    Renders the main recipes index page with pagination.
+    Context:
+        recipes -- A queryset of published :model:`recipes.Recipe` instances
+        Template:
+        recipes/index.html (first page)
+        recipes/recipes_list.html (subsequent pages)
+    """
     queryset = Recipe.objects.filter(status=1)
     paginate_by = 6
 
