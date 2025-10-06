@@ -333,7 +333,7 @@ It features a **clean minimalist design** inspired by neutral tones and soft con
 
 #### ✨ Features
 - Displays a banner with **“🍰 New recipe every Thursday”** at the top.  
-- Main navigation links: `Home`, `Cake`, `About`, `FAQ`, and `Logout`.  
+- Main navigation links: `Home`, `Cake`, `About`, `FAQ`.  
 - Centered **logo illustration** — “Make Me Sweet” with a minimal line-art cake icon.  
 - **Social media icons** (Instagram, Pinterest, Facebook, Twitter) placed on the right for quick sharing.  
 - Personalized message on login, e.g. _“Signed in as... — your recipes await.”_  
@@ -928,6 +928,7 @@ This project utilized AI assistance strategically throughout the development pro
 - **GitHub Copilot:** AI assistance for content creation and logo design
 - **Pexels:** Free stock photos and videos for website media
 - **Canva:** Design platform for mockups and graphics creation
+- **Coolors.co:** Color contrast testing and accessibility compliance verification
 - **Code Institute:** Project guidance and resources
 - **Django Community:** Framework documentation and support
 - **Cloudinary:** Media management solutions
