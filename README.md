@@ -74,6 +74,17 @@ Each story describes a specific goal and its benefit:
 ![User Stories Kanban Board](docs/screenshots/kanban.png)
 *User Stories organized in GitHub Projects Kanban board*
 
+
+#### Project Board  
+All user stories are tracked and managed on a Kanban board in GitHub Projects.  
+The board is divided into **Backlog, Todo, In Progress, and Done**, showing the progress of each issue.  
+
+![Kanban Board](docs/screenshots/kanban_board.png)
+*GitHub Projects Kanban board showing user stories and development progress*
+
+🔗 **Link to the user stories kanban board:** [GitHub Project Board](https://github.com/users/xAlex-an/projects/13)
+
+---
 #### Milestones  
 To organize development, the project was divided into milestones.  
 Each milestone groups related features and issues tracked on the GitHub Kanban board.  
@@ -95,19 +106,11 @@ Each milestone groups related features and issues tracked on the GitHub Kanban b
    - View About page (author info)  
    - Submit recipe ideas  
 
----
-
-#### Project Board  
-All user stories are tracked and managed on a Kanban board in GitHub Projects.  
-The board is divided into **Backlog, Todo, In Progress, and Done**, showing the progress of each issue.  
-
-![Kanban Board](docs/screenshots/kanban_board.png)
-*GitHub Projects Kanban board showing user stories and development progress*
-
-🔗 **Link to the user stories kanban board:** [GitHub Project Board](https://github.com/users/xAlex-an/projects/13)
-
 ![Project Milestones](docs/screenshots/milestone_1.png)
-*Project milestones and sprint planning overview*  
+![Project Milestones Overview](docs/screenshots/milestone.png)
+
+*Project milestones and sprint planning overview*
+
 
 #### MoSCoW Prioritization  
 The **MoSCoW prioritization method** was applied to classify tasks into importance categories using custom labels inside GitHub Issues.  
@@ -290,6 +293,27 @@ The visual design emphasizes warmth and elegance with:
 - Pink accents add subtle sweetness theme
 - High contrast ensures accessibility compliance
 
+#### Color Contrast Testing
+
+The color scheme has been thoroughly tested for accessibility compliance using Coolors.co contrast checker to ensure optimal readability for all users:
+
+| Primary Contrast Test | Secondary Contrast Test |
+|----------------------|-------------------------|
+| ![Color Contrast Test](docs/screenshots/color_contrast.png) | ![Color Contrast Test 1](docs/screenshots/color_contrast_1.png) |
+| **Primary Text Colors** - Testing contrast ratios for main content | **Secondary Text Colors** - Testing contrast ratios for muted content |
+
+**Accessibility Results:**
+- ✅ **WCAG AA Compliant** - All text meets minimum contrast ratio of 4.5:1
+- ✅ **WCAG AAA Compliant** - Enhanced contrast ratio of 7:1 for improved readability
+- ✅ **Large Text Compliant** - Headlines and large text meet 3:1 ratio requirement
+- ✅ **Color Blind Friendly** - High contrast ensures visibility for color vision deficiencies
+
+**Testing Details:**
+- **Tool Used:** Coolors.co Contrast Checker
+- **Standards:** WCAG 2.1 Guidelines
+- **Tested Combinations:** Primary/secondary text on all background colors
+- **Result:** Full accessibility compliance across all color combinations
+
 ### Imagery
 
 - Hero video background showcasing baking process
@@ -299,36 +323,213 @@ The visual design emphasizes warmth and elegance with:
 
 ## Website Features
 
+### 🌿 Navigation Bar  
 
-1. **Hero Video Section**
-   - Autoplay background video with fallback image
-   - Responsive video sources for different screen sizes
-   - Accessibility captions
+#### 📸 Preview  
+![Navigation Bar Screenshot](docs/screenshots/navbar.png)
 
-2. **Recipe Browsing**
-   - Card-based layout with recipe previews
-   - Pagination for better performance
-   - Recipe tags and badges
+The navigation bar provides quick and intuitive access to the main sections of the website.  
+It features a **clean minimalist design** inspired by neutral tones and soft contrasts for a cozy, modern look.  
 
-3. **Recipe Detail View**
-   - Full recipe information with ingredients and instructions
-   - Comment system for user interaction
-   - Author and publication date
+#### ✨ Features
+- Displays a banner with **“🍰 New recipe every Thursday”** at the top.  
+- Main navigation links: `Home`, `Cake`, `About`, `FAQ`, and `Logout`.  
+- Centered **logo illustration** — “Make Me Sweet” with a minimal line-art cake icon.  
+- **Social media icons** (Instagram, Pinterest, Facebook, Twitter) placed on the right for quick sharing.  
+- Personalized message on login, e.g. _“Signed in as... — your recipes await.”_  
+- Responsive design — adapts seamlessly to different screen sizes.  
 
-4. **User Authentication**
-   - Registration and login functionality
-   - User-specific features (commenting)
-   - Django Allauth integration
 
-5. **Admin Interface**
-   - Django admin for content management
-   - Recipe creation and editing
-   - Comment moderation
+### 🍰 Hero Section  
 
-6. **Responsive Design**
-   - Mobile-first approach
-   - Bootstrap 5 framework
-   - Optimized for all screen sizes
+#### 📸 Preview  
+![Hero Section Screenshot](docs/screenshots/hero.png)
+
+The hero section features a **full-width video background** with the text **“MAKE ME SWEET”** centered on top.  
+It sets a warm, cozy tone and introduces the brand’s aesthetic from the very first glance.
+
+#### ✨ Features
+- Autoplay looping video background.  
+- Minimal white overlay text.  
+- Responsive and lightweight design.  
+
+
+### 🧁 Sweet Recipes  
+
+#### 📸 Preview  
+![Recipes Section Screenshot 1](docs/screenshots/recipes-1.png)  
+![Recipes Section Screenshot 2](docs/screenshots/recipes-2.png)
+
+A gallery of seasonal and popular desserts presented in an elegant card layout.  
+Each card highlights a recipe with its image, short description, and special tag.
+
+#### ✨ Features
+- Visually rich recipe cards with photos and labels (e.g. *New Recipe*, *Popular Choice*, *Autumn Special*).  
+- Short, engaging descriptions under each title.  
+- Fully responsive and mobile-friendly design.  
+
+### 🌟 Highlights Bar  
+
+#### 📸 Preview  
+![Highlights Bar Screenshot](docs/screenshots/highlights-bar.png)
+
+A subtle, scrolling banner displaying themed highlights like  
+*Crafted with care*, *Reader’s Favourite*, *Nature Inspired*, *Based in UK*, and *Cozy Bake*.
+
+#### ✨ Features
+- Smooth horizontal scrolling animation.  
+- Icons paired with short text labels for clarity.  
+- Pauses on hover; swipeable on mobile devices.  
+- Lightweight, responsive, and accessible.
+
+### 💞 Desserts For Your Soul Mates  
+
+#### 📸 Preview  
+![Desserts Section Screenshot](docs/screenshots/desserts.png)
+
+A cozy, inviting section that celebrates sharing desserts with loved ones.  
+Combines warm photography and heartfelt copy to reflect the brand’s emotional tone.
+
+### 📷 Discover Our Instagram  
+
+#### 📸 Preview  
+![Instagram Section Screenshot](docs/screenshots/instagram.png)
+
+An embedded Instagram section showcasing the latest dessert videos and behind-the-scenes moments.
+
+### ❓ FAQ  
+
+#### 📸 Preview  
+![FAQ Section Screenshot](docs/screenshots/faq.png)
+
+A helpful FAQ section answering common baking and recipe-related questions.
+
+### 👩‍🍳 About Me  
+
+#### 📸 Preview  
+![About Me Section Screenshot](docs/screenshots/about-me.png)
+
+A warm introduction from the creator — sharing the story behind *Make Me Sweet* and the love for homemade desserts.
+
+### ☕ Footer  
+
+#### 📸 Preview  
+![Footer Section Screenshot](docs/screenshots/footer.png)
+
+A clean and well-structured footer that provides quick access to updates, contact info, and seasonal schedules.
+
+#### ✨ Features
+- Brand logo and tagline: *“Crafting sweet memories.”*  
+- Blog update schedule and newsletter info.  
+- Holiday baking calendar with key dates.  
+- Contact details (email, phone, location).  
+- Fully responsive, with consistent color palette and typography.
+
+### 🍒 Recipes Pagination  
+
+#### 📸 Preview  
+![Recipes List Screenshot](docs/screenshots/recipes-list.png)
+
+The recipes page includes a simple and intuitive pagination system that helps users explore more desserts effortlessly.
+
+#### ✨ Features
+- **“Prev”** and **“Next”** buttons allow smooth navigation between recipe pages.  
+
+### 🥕 Recipe Details Page  
+
+#### 📸 Preview  
+![Recipe Details Screenshot](docs/screenshots/recipe-details.png)
+
+Each recipe page presents a detailed view with a photo, author info, date, and full ingredient list.
+
+### 💬 Comments Section  
+
+#### 📸 Preview  
+![Comments Section Screenshot](docs/screenshots/comments.png)
+
+A section where users can share feedback, thoughts, and baking experiences under each recipe.
+
+### ⚙️ Comment Actions & Notifications  
+
+#### 📸 Preview  
+![Delete Comment Modal](docs/screenshots/delete.png)  
+![Comment Deleted Alert](docs/screenshots/comment-deleted.png)  
+![Comment Updated Alert](docs/screenshots/comment-updated.png)  
+![Comment Pending Alert](docs/screenshots/comment-pending.png)
+
+Interactive modals and alerts that give users clear feedback when managing their comments.
+
+#### ✨ Features
+- Confirmation modal before deleting a comment.  
+- Informative toast-style alerts for deletion, updates, and pending approval.  
+- Consistent design using brand colors and typography.  
+- Enhances user trust and clarity during interactions.
+
+### 🔐 User Authentication  
+
+#### 📸 Preview  
+![Sign Up Screenshot](docs/screenshots/auth.png)  
+![Sign In Screenshot](docs/screenshots/auth-login.png)  
+![Signed In Alert](docs/screenshots/auth-signed-in.png)  
+![Sign Out Confirmation](docs/screenshots/auth-signout.png)  
+![Signed Out Alert](docs/screenshots/auth-signed-out.png)
+
+Secure registration and login system allowing users to join and interact with the *Make Me Sweet* community.
+
+#### ✨ Features
+- Registration, login, and logout powered by **Django Allauth**.  
+- Personalized features for authenticated users (e.g. commenting).  
+- Feedback alerts confirming actions (sign in/out, registration success).  
+- “Remember me” option on login for convenience.  
+- Minimal and elegant forms styled consistently with the brand.  
+- Smooth user flow ensuring clarity and comfort.
+
+
+### 🧑‍🍳 Admin Panel  
+
+#### 📸 Preview  
+![Django Admin Panel Screenshot](docs/screenshots/admin-panel.png)  
+![Recipe Tag System Screenshot](docs/screenshots/admin-tags.png)
+
+A fully functional Django Admin Panel for managing content and user interactions.
+
+#### ✨ Features
+- Custom admin configuration for managing **recipes**, **comments**, and **users**.  
+- Integration with **Django Summernote** for rich-text editing.  
+- Tagging system allowing editors to assign visual labels (e.g. *New Recipe*, *Popular Choice*, *Seasonal Special*).
+- Displays recent actions for quick moderation.
+- Streamlined interface supporting fast recipe publishing and content updates.
+- **CRUD Operations:** Full Create, Read, Update, Delete functionality for all content.
+- **User Management:** Monitor and manage user accounts and permissions.
+- **Comment Moderation:** Review and approve user comments before publication.
+
+### 📋 Feature Summary
+
+The Make Me Sweet website offers a comprehensive set of features designed for both users and administrators:
+
+#### 👥 **User Features:**
+- Browse and view detailed recipe information
+- User registration and authentication system
+- Interactive commenting system with moderation
+- Responsive design for all devices
+- Social media integration and sharing
+- Newsletter subscription and updates
+
+#### 🛠️ **Admin Features:**
+- Complete content management system
+- Recipe creation with rich-text editing
+- Comment moderation and approval
+- User management and permissions
+- Tag system for recipe categorization
+- Analytics and site monitoring
+
+#### 🎨 **Design Features:**
+- Mobile-first responsive design
+- Accessibility-compliant color scheme
+- Modern typography and clean layouts
+- Interactive animations and effects
+- Optimized media delivery via Cloudinary
+- Fast loading and performance optimization
 
 ## Tablet/Mobile View
 
