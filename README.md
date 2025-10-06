@@ -203,11 +203,61 @@ The website follows a hierarchical structure:
 
 ### Skeleton (Wireframes)
 
-Wireframes were created for desktop, and mobile views focusing on:
-- Clean, intuitive navigation
-- Recipe card layouts
-- Comment sections
-- Responsive breakpoints
+Wireframes were created for desktop and mobile views to plan the layout and user experience across different sections of the website.
+
+#### Desktop Wireframes
+
+The desktop wireframes showcase the full-width layout optimized for larger screens with comprehensive navigation and content display:
+
+| Homepage | Recipe List |
+|-------------|-----------------|
+| ![Desktop Wireframe Main](docs/screenshots/desktop_wireframe.png) | ![Desktop Wireframe 1](docs/screenshots/desktop_wireframe_1.png) |
+
+
+| Instagram Reels | Desserts for Soul Mates  |
+|----------------|-------------------|
+| ![Desktop Wireframe 2](docs/screenshots/desktop_wireframe_2.png) | ![Desktop Wireframe 3](docs/screenshots/desktop_wireframe_3.png) |
+
+
+| FAQ Section |
+|--------------------|
+| ![Desktop Wireframe 4](docs/screenshots/desktop_wireframe_4.png) |
+
+| About Me |
+|-------------------------|
+| ![Desktop Wireframe 5](docs/screenshots/desktop_wireframe_5.png) |
+
+#### Mobile Wireframes
+
+The mobile wireframes demonstrate responsive design with optimized layouts for smaller screens and touch navigation:
+
+| ![Mobile Wireframe Main](docs/screenshots/mobile_wireframe.png) | ![Mobile Wireframe 2](docs/screenshots/mobile_wireframe_2.png) |
+| **Mobile Homepage** - Collapsed navigation with mobile-first design | **Mobile Recipe Pages** - Optimized content layout for mobile viewing |
+
+#### Authentication Wireframes
+
+The authentication system includes dedicated pages for user registration, login, and logout functionality with consistent design patterns:
+
+| Sign Up | Sign In | Sign Out |
+|---------|---------|----------|
+| ![Sign Up Page](docs/screenshots/Sign_up.png) | ![Sign In Page](docs/screenshots/sign_in.png) | ![Sign Out Page](docs/screenshots/Sign_out.png) |
+| **Registration Form** - User account creation with validation | **Login Form** - Secure user authentication | **Logout Confirmation** - Safe session termination |
+
+**Authentication Features:**
+- User-friendly form layouts with clear labels
+- Input validation and error handling
+- Consistent styling with the main site theme
+- Responsive design for all device sizes
+- Security-focused user experience
+- Clear call-to-action buttons and navigation
+
+**Key Wireframe Features:**
+- Clean, intuitive navigation structure
+- Recipe card layouts optimized for each screen size
+- Comment sections with user interaction design
+- Responsive breakpoints for seamless device transitions
+- Mobile-first approach with touch-friendly elements
+- Clear information hierarchy and content organization
 
 ### Surface
 
