@@ -5,13 +5,9 @@
 A Django-based recipe sharing website featuring beautiful dessert recipes with Cloudinary integration for media management. This platform allows users to discover, share, and enjoy delightful dessert recipes with an elegant, user-friendly interface.
 
 ## Responsivity Example Image
-
+![Mockup](docs/screenshots/mockup.png)
 ### Desktop, Tablet & Mobile Views
 
-| Desktop (Laptop) | Tablet | Mobile |
-|------------------|--------|--------|
-| ![Desktop View](docs/screenshots/laptop.png) | ![Tablet View](docs/screenshots/tablet.png) | ![Mobile View](docs/screenshots/mobile.png) |
-| Desktop View | Optimized layout for tablets | Compact mobile-first design |
 
 *Make Me Sweet website displayed across different devices showing responsive design adaptation*
 
