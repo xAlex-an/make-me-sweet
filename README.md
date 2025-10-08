@@ -4,15 +4,34 @@
 
 A Django-based recipe sharing website featuring beautiful dessert recipes with Cloudinary integration for media management. This platform allows users to discover, share, and enjoy delightful dessert recipes with an elegant, user-friendly interface.
 
+##  User Value
+
+### **For Recipe Enthusiasts:**
+- **Discover** carefully curated dessert recipes with high-quality photography
+- **Explore** detailed ingredient lists and step-by-step instructions
+- **Engage** with the community through comments and feedback
+- **Browse** easily with responsive design across all devices
+
+### **For the Recipe Creator:**
+- **Share** passion for baking through beautiful recipe presentations
+- **Build** a community of dessert lovers
+- **Manage** content efficiently through Django admin interface
+- **Grow** audience with social media integration
+
+## 🎯 Target Audience
+
+**Make Me Sweet** is designed for a diverse community of food enthusiasts and professionals:
+
 ## Responsivity Example Image
 ![Mockup](docs/screenshots/Mockup.png)
 ### Desktop, Tablet & Mobile Views
-
 
 *Make Me Sweet website displayed across different devices showing responsive design adaptation*
 
 ## Contents
 
+- [User Value](#user-value)
+- [Target Audience](#-target-audience)
 - [User Experience (UX)](#user-experience-ux)
   - [Agile Methodology](#agile-methodology)
     - [User Stories](#user-stories)
@@ -25,6 +44,7 @@ A Django-based recipe sharing website featuring beautiful dessert recipes with C
   - [Skeleton (Wireframes)](#skeleton-wireframes)
   - [Surface](#surface)
 - [Database Design](#database-design)
+- [Django Models & Application Architecture](#django-models--application-architecture)
 - [Design](#design)
   - [Typography](#typography)
   - [Colour Scheme](#colour-scheme)
@@ -37,6 +57,7 @@ A Django-based recipe sharing website featuring beautiful dessert recipes with C
   - [Frameworks](#frameworks)
   - [Libraries](#libraries)
   - [Programs](#programs)
+- [Setup & Installation](#setup--installation)
 - [Deployment](#deployment)
 - [Testing](#testing)
   - [Validation](#validation)
@@ -77,6 +98,9 @@ The board is divided into **Backlog, Todo, In Progress, and Done**, showing the 
 
 ![Kanban Board](docs/screenshots/kanban_board.png)
 *GitHub Projects Kanban board showing user stories and development progress*
+
+![Kanban Board - Completed Stories](docs/screenshots/kanban_done.png)
+*Updated Kanban board showing completed user stories moved to "Done" column*
 
 🔗 **Link to the user stories kanban board:** [GitHub Project Board](https://github.com/users/xAlex-an/projects/13)
 
@@ -171,6 +195,96 @@ This structure ensures that:
 - Recipes are fully manageable by the author/admin.  
 - Comments can be moderated using the `approved` field.  
 - Users can interact with recipes in a structured, relational way.  
+
+## Django Models & Application Architecture
+
+### 🏗️ **Model Overview**
+
+The Make Me Sweet application uses three core Django models that handle all data operations and business logic:
+
+#### **📧 User Model (Django Built-in)**
+```python
+# Extends Django's AbstractUser
+- Handles user authentication and authorization
+- Manages user registration, login, and logout
+- Stores user credentials and profile information
+- Integrated with Django Allauth for enhanced authentication
+```
+
+**Role in Application:**
+- **Authentication:** Secure user registration and login system
+- **Authorization:** Controls access to commenting and admin features  
+- **Profile Management:** Stores user information for personalized experience
+- **Relationship Hub:** Links to recipes (as authors) and comments
+
+#### **🍰 Recipe Model**
+```python
+class Recipe(models.Model):
+    title = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    featured_image = CloudinaryField('image', default='placeholder')
+    description = models.TextField()
+    ingredients = models.TextField()
+    instructions = models.TextField()
+    excerpt = models.TextField(blank=True)
+    tag = models.CharField(max_length=50, blank=True)
+    status = models.IntegerField(choices=STATUS, default=0)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+```
+
+**Role in Application:**
+- **Content Management:** Central model for all recipe data
+- **SEO Optimization:** Automatic slug generation for clean URLs
+- **Media Handling:** Cloudinary integration for image optimization
+- **Publishing Workflow:** Draft/Published status for content control
+- **Categorization:** Tag system for recipe organization
+- **Timestamps:** Automatic tracking of creation and modification dates
+
+#### **💬 Comment Model**
+```python
+class Comment(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+```
+
+**Role in Application:**
+- **Community Engagement:** Enables user interaction with recipes
+- **Content Moderation:** Admin approval system for quality control
+- **User Feedback:** Platform for sharing baking experiences and tips
+- **Relationship Management:** Links users to specific recipes
+- **Chronological Organization:** Timestamp-based comment ordering
+
+### 🔄 **Model Interactions & Business Logic**
+
+#### **CRUD Operations:**
+- **Create:** Users can create comments; Admins can create recipes
+- **Read:** Public access to published recipes; User access to own comments
+- **Update:** Authors can edit recipes; Users can edit own comments
+- **Delete:** Authors can delete recipes; Users can delete own comments
+
+#### **Data Flow:**
+1. **Recipe Creation:** Admin creates recipe → Auto-generates slug → Cloudinary processes image
+2. **User Interaction:** User registers → Can comment on recipes → Comments await approval
+3. **Content Moderation:** Admin reviews comments → Approves/rejects → Visible to public
+
+#### **Security & Permissions:**
+- **Recipe Management:** Only authenticated staff can create/edit recipes
+- **Comment System:** Only registered users can comment
+- **Moderation:** All comments require admin approval before publication
+- **Data Integrity:** Foreign key relationships ensure referential integrity
+
+### 📊 **Model Performance Features**
+
+- **Optimized Queries:** Related object prefetching to reduce database hits
+- **Image Optimization:** Cloudinary automatic image compression and delivery
+- **Pagination:** Efficient loading of recipe lists and comments
+- **Caching:** Strategic caching of frequently accessed recipe data
+- **Indexing:** Database indexes on frequently queried fields (slug, status, created_on)
 
 ### Strategy
 
@@ -592,6 +706,54 @@ The website is fully responsive with optimized layouts for different screen size
 - **Heroku:** Deployment platform
 - **PostgreSQL:** Database (via Neon)
 - **VS Code:** Development environment
+
+## Setup & Installation
+
+### Local Development Setup
+
+Follow these steps to set up the project locally for development:
+
+#### 1. **Clone the Repository**
+```bash
+git clone https://github.com/xAlex-an/make-me-sweet.git
+cd make-me-sweet
+```
+
+#### 2. **Create Virtual Environment**
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+#### 3. **Install Dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. **Environment Variables Setup**
+Create an `env.py` file in the root directory:
+```python
+import os
+
+os.environ["DATABASE_URL"] = "sqlite:///db.sqlite3"
+os.environ["SECRET_KEY"] = "your-secret-key-here"
+os.environ["CLOUDINARY_URL"] = "your-cloudinary-url"
+os.environ["DEBUG"] = "True"
+```
+
+#### 5. **Database Setup**
+```bash
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+#### 6. **Run Development Server**
+```bash
+python manage.py runserver
+```
+
+The application will be available at `http://127.0.0.1:8000/`
 
 ## Deployment
 
