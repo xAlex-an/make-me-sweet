@@ -853,8 +853,54 @@ Manual testing was performed on the site to ensure that all features worked as e
 #### HTML Validation - W3C Markup Validator 
 - **HTML Validation:** W3C Markup Validator - No errors
 - **CSS Validation:** W3C CSS Validator - No errors  
-- **JavaScript:** JSHint validation passed
+- **JavaScript:** ESLint validation passed with no errors
 - **Python:** PEP8 compliance verified
+
+#### JavaScript Code Validation - ESLint
+
+All JavaScript files in the project have been validated using ESLint with a comprehensive configuration to ensure code quality and consistency.
+
+**ESLint Configuration Setup:**
+- Created `eslint.config.js` using the new flat config format
+- Configured for ES2022 compatibility with browser environment
+- Included all necessary global variables for web APIs
+
+**Files Validated:**
+- `static/js/instagram-accessibility.js` ✅
+- `static/js/script.js` ✅  
+- `static/js/comments.js` ✅
+
+**Validation Process:**
+```bash
+# ESLint installation and validation
+npx eslint static/js/ --fix
+
+# Results: All files pass validation with exit code 0
+```
+
+**Issues Resolved During Validation:**
+
+**1. Instagram Accessibility Script (`instagram-accessibility.js`)**
+- ✅ Added `MutationObserver` to global variables configuration
+- ✅ Fixed formatting and code style issues
+
+**2. Main Script File (`script.js`)**
+- ✅ Corrected indentation from 4 spaces to 2 spaces
+- ✅ Applied consistent formatting standards
+
+**3. Comments Script (`comments.js`)**
+- ✅ Changed double quotes to single quotes for consistency
+- ✅ Replaced `let` with `const` for variables that aren't reassigned
+- ✅ Added `bootstrap` to global variables configuration
+- ✅ Fixed all formatting and style issues
+
+**ESLint Rules Applied:**
+- **Error Prevention:** `no-unused-vars`, `no-undef`, strict equality checks
+- **Best Practices:** `prefer-const`, `no-var`, proper error handling
+- **Code Style:** 2-space indentation, single quotes, semicolons
+- **Modern JavaScript:** ES6+ features, arrow function spacing
+
+**Final Status:** 🎉 **All JavaScript files pass ESLint validation with zero errors**
 
 #### Python Code Validation
 
