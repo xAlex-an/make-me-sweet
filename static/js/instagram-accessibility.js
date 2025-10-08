@@ -21,8 +21,8 @@ function processInstagramIframe(iframe) {
     const parent = iframe.closest('.instagram-media');
     if (parent) {
       let index = 0;
-      if (parent.classList.contains('instagram-embed-1')) index = 1;
-      else if (parent.classList.contains('instagram-embed-2')) index = 2;
+      if (parent.classList.contains('instagram-embed-1')) {index = 1;}
+      else if (parent.classList.contains('instagram-embed-2')) {index = 2;}
       
       const title = INSTAGRAM_TITLES[index] || 'Instagram embed content';
       iframe.title = title;
