@@ -861,6 +861,115 @@ Manual testing was performed on the site to ensure that all features worked as e
 ![Python Linter Results](docs/screenshots/python_linter.png)
 *Python linter validation showing clean code with no errors*
 
+#### Resolved Python Linting Issues
+
+During the validation process, several PEP 8 compliance issues were identified and resolved:
+
+**1. Admin.py Validation Errors**
+```python
+# Error: E302 expected 2 blank lines, found 1
+# Error: E501 line too long (95 > 79 characters)
+# Error: E501 line too long (81 > 79 characters)
+```
+
+**Before Fixes:**
+```python
+from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
+from .models import Recipe, Comment
+
+@admin.register(Recipe)  # Missing blank line above
+class RecipeAdmin(SummernoteModelAdmin):
+    list_display = ('title', 'slug', 'status', 'created_on')
+    search_fields = ['title', 'author__username', 'description', 'ingredients', 'instructions']  # Line too long
+    list_filter = ('status', 'created_on', 'author')
+    prepopulated_fields = {'slug': ('title',)}
+    summernote_fields = ('description', 'ingredients', 'instructions', 'excerpt')  # Line too long
+```
+
+**After Fixes:**
+```python
+from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
+from .models import Recipe, Comment
+
+
+@admin.register(Recipe)  # Added proper spacing
+class RecipeAdmin(SummernoteModelAdmin):
+    list_display = ('title', 'slug', 'status', 'created_on')
+    search_fields = [
+        'title', 'author__username', 'description',
+        'ingredients', 'instructions'
+    ]  # Split long line
+    list_filter = ('status', 'created_on', 'author')
+    prepopulated_fields = {'slug': ('title',)}
+    summernote_fields = (
+        'description', 'ingredients', 'instructions', 'excerpt'
+    )  # Split long line
+```
+
+**2. Models.py Validation Errors**
+```python
+# Error: W293 blank line contains whitespace
+# Error: E303 too many blank lines (2)
+# Error: W292 no newline at end of file
+```
+
+**Before Fixes:**
+```python
+class Recipe(models.Model):
+    class Meta:
+        ordering = ["-created_on"]
+    # Blank line with whitespace
+    def __str__(self):
+        return f"{self.title} | written by {self.author}"
+
+class Comment(models.Model):
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:  # Too many blank lines above
+        ordering = ["created_on"]
+    
+    def __str__(self):
+        return f"Comment {self.body} by {self.author}"  # Missing newline at end
+```
+
+**After Fixes:**
+```python
+class Recipe(models.Model):
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return f"{self.title} | written by {self.author}"
+
+class Comment(models.Model):
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:  # Proper spacing
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return f"Comment {self.body} by {self.author}"
+```
+
+#### Python Validation Summary
+
+| File | Issues Found | Issues Resolved | Status |
+|------|-------------|----------------|--------|
+| `recipes/admin.py` | E302, E501 (2 instances) | ✅ All fixed | Compliant |
+| `recipes/models.py` | W293, E303, W292 | ✅ All fixed | Compliant |
+| `recipes/views.py` | No issues | N/A | Compliant |
+| `recipes/forms.py` | No issues | N/A | Compliant |
+
+**Key Improvements:**
+- ✅ **Proper spacing**: Added correct blank lines between classes and functions
+- ✅ **Line length compliance**: Split long lines to stay within 79 characters
+- ✅ **Whitespace cleanup**: Removed trailing whitespace and extra blank lines
+- ✅ **File endings**: Added proper newlines at end of files
+- ✅ **PEP 8 compliance**: All Python files now follow Python style guidelines
+
 #### 🌐 HTML Validation via Live URL
 
 Since the project uses Django Template Language (DTL), direct validation of .html template files was not possible. Instead, the final rendered markup was validated using the W3C Markup Validator via the deployed site:
