@@ -852,6 +852,7 @@ Manual testing was performed on the site to ensure that all features worked as e
 
 #### HTML Validation - W3C Markup Validator 
 - **HTML Validation:** W3C Markup Validator - No errors
+- **Validation Coverage:** HTML markup validation was performed on all pages of the website without any errors
 - **CSS Validation:** W3C CSS Validator - No errors  
 - **JavaScript:** ESLint validation passed with no errors
 - **Python:** PEP8 compliance verified
